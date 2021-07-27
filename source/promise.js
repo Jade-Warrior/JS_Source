@@ -117,12 +117,10 @@
     return promise2;
   }
   Promise.prototype.catch = function(onrejected) {
-    var self = this;
-    return self.then(null, onrejected);
+    return this.then(null, onrejected);
   }
   Promise.prototype.finally = function (callback) {
-    var self = this;
-    self.then(function(value) {
+    return this.then(function(value) {
       return Promise.resolve(callback()).then(function() {return value});
     }, function(reason) {
       return Promise.resolve(callback()).then(function() {throw reason});
@@ -152,6 +150,43 @@
       })
     });
   }
+  Promise.any = function (promises) {
+    if (!Array.isArray(promises)) throw new TypeError('promise must be array');
+    var count = 0;
+    var reslut = [];
+    return new Promise(function(reslove, reject) {
+      promises.forEach(function(promise, index) {
+        if (!isPromise(promise)) promise = Promise.resolve(promise);
+        promise.then(function(value) {
+          reslove(value);
+        }).catch(function(reason) {
+          count ++;
+          reslut[index] = promise;
+          if (count >= promises.length) reject(reslut);
+        })
+      })
+    });
+  }
+  Promise.allSettled = function (promises) {
+    if (!Array.isArray(promises)) throw new TypeError('promise must be array');
+    var count = promises.length;
+    var reslut = [];
+    return new Promise(resolve => {
+      promises.forEach(function(promise, index) {
+        if (!isPromise(promise)) promise = Promise.resolve(promise);
+        promise.then(function(val) {
+          reslut[index] = { status: RESOLVE, result: val }
+        }, function(res) {
+          reslut[index] = { status: REJECT, result: res }
+        }).finally(function() {
+          count--;
+          if (count <= 0) {
+            resolve(reslut)
+          }
+        })
+      })
+    })
+  }
   Promise.race = function(promises) {
     if (!Array.isArray(promises)) throw new TypeError('promise must be array');
     return new Promise(function(reslove, reject) {
@@ -162,13 +197,11 @@
     });
   }
   Promise.resolve = function (value) {
-    if (value instanceof Promise) return value;
     return new Promise(function(resolve, reject) {
       resolve(value);
     });
   }
   Promise.reject = function (reason) {
-    if (reason instanceof Promise) return reason;
     return new Promise(function(resolve, reject) {
       reject(reason);
     });
@@ -190,4 +223,5 @@
   // 暴露API
   if(typeof window !== 'undefined') window.Promise = Promise;
   if(typeof module === 'object' && typeof module.exports === 'object') module.exports = Promise;
+
 })();
