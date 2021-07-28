@@ -1,1 +1,3 @@
  - promise A+: https://juejin.cn/post/6985431933513629733
+ - call|bind|new: https://juejin.cn/post/6989501088021872676
+ - 
