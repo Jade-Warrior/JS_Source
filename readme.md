@@ -1,3 +1,4 @@
  - promise A+: https://juejin.cn/post/6985431933513629733
  - call|bind|new: https://juejin.cn/post/6989501088021872676
- - 
+ - concurrency control: 并发管控
+ - id_ipd_2tree: id pid数据转为树形数据结构
