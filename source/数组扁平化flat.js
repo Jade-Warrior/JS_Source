@@ -13,16 +13,15 @@ console.log(arr1);
 /* 方案2：把数组直接变为字符串即可 */
 // 把数组直接变为字符串即可（数组toString之后，不管你有多少级，最后都会变为以逗号分隔的字符串，没有中括号和所谓的层级了），相当于直接的扁平化了
 // arr.toString() -> "1,2,2,3,4,5,5,6,7,8,9,11,12,12,13,14,10"
-const arr2 = arr.toString().split(',').map(item => Number(item));
+const arr2 = arr.toString().split(',').map(Number);
 console.log(arr2);
 
 /*方案3：JSON.stringify + 正则替换*/
-const arr3 = JSON.stringify(arr).replace(/(\[|\])/g, '').split(',').map(item => Number(item));
+const arr3 = JSON.stringify(arr).replace(/(\[|\])/g, '').split(',').map(Number);
 console.log(arr3);
 
 /*方案4：reduce + 递归*/
 function flatArray(arr) {
-  let result = [];
   return arr.reduce((acc, item) => {
     return Array.isArray(item) ? acc.concat(flatArray(item)) : acc.concat(item)
   }, [])

@@ -17,7 +17,7 @@ function compose(...funcs) {
 const add1 = x => x + 1;
 const mul3 = x => x * 3;
 const div2 = x => x / 2;
-
+// 从左到右运算
 var operate = compose(div2, mul3, add1);
 var result = operate(0);
-console.log(result);
+console.log(result); // 1.5

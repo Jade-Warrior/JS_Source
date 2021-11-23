@@ -2,3 +2,14 @@
  - call|bind|new: https://juejin.cn/post/6989501088021872676
  - concurrency control: 并发管控
  - id_ipd_2tree: id pid数据转为树形数据结构
+ - redunce
+ - redux的compose函数实现
+ - 数组扁平化flat
+ - 柯里化无限加
+ - 截流throttle
+ - 防抖debounce
+ - 虚拟滚动
+ - instanceof
+ - 深浅拷贝copy
+ - 各种检测方法:
+    - isEmptyObject空对象

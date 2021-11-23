@@ -18,4 +18,4 @@ var total = arr.reduce((result, item, index) => {
 		console.log(result, item, index)
     return result + item;
 }, 0);
-console.log(total); 
+console.log(total); // 100

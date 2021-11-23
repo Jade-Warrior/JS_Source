@@ -1,3 +1,4 @@
+// 不确定参数个数
 function add(...params) {
   const proxy = function(...args) {
     params = params.concat(args);
@@ -10,9 +11,9 @@ function add(...params) {
   return proxy;
 }
 
-console.log(add(1)(2)(3)); //->6
+console.log(add(1)(2)(3).toString()); //->6
 
-console.log(add(1, 2, 3)(4)); //->10
+console.log(add(1, 2, 3)(4).toString()); //->10
 
-console.log(add(1)(2)(3)(4)(5)); //->15
+console.log(add(1)(2)(3)(4)(5).toString()); //->15
 
