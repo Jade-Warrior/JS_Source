@@ -2,16 +2,14 @@
 // 没有初始值，result是数组第一项，从第二项开始遍历
 // 有初始值，result是初始值，从第一项开始遍历
 Array.prototype.reduce = function reduce(callback, initial) {
-  var self = this;// this=>arr
-  var index = 0;
-	if (initial === undefined) {
-    console.log('initial', initial);
-  	initial = arr[0];
+  const arr = this;
+  let index = 0;
+  if (!initial) {
+    initial = this[0];
     index = 1;
   }
-  for(;index < self.length; index ++) {
-    var item = self[index];
-  	initial = callback(initial, item, index);
+  for (; index < arr.length; index++) {
+    initial = callback(initial, arr[index], index)
   }
   return initial;
 }
