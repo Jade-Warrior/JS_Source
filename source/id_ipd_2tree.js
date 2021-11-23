@@ -1,9 +1,9 @@
 // id pid数据转为树形数据结构
-
+// pid === id pid的数据push到id的children
 const flat2tree = flatLs => {
   flatLs.forEach(item => {
     if (item.pid !== 0) {
-      const index = flatLs.findIndex(v => v.id === item.pid)
+      const index = flatLs.findIndex(v => item.pid === v.id)
       if (index !== -1) {
         flatLs[index].children = flatLs[index].children || []
         flatLs[index].children.push(item)
@@ -12,7 +12,6 @@ const flat2tree = flatLs => {
   })
   return flatLs.filter(item => item.pid == 0)
 }
-
 
 // test1
 const data1 = [
