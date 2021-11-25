@@ -10,6 +10,6 @@
  - 防抖debounce
  - 虚拟滚动
  - instanceof
- - 深浅拷贝copy
+ - 深拷贝deepCopy
  - 各种检测方法:
     - isEmptyObject空对象
