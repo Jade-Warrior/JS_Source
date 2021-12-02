@@ -4,7 +4,8 @@
  - id_ipd_2tree: id pid数据转为树形数据结构
  - redunce
  - redux的compose函数实现
- - 数组扁平化flat
+ - flatArray数组扁平化
+ - flattenObject对象扁平化
  - 柯里化无限加
  - 截流throttle
  - 防抖debounce
