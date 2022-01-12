@@ -12,5 +12,7 @@
  - 虚拟滚动
  - instanceof
  - 深拷贝deepCopy
+ - lazyman: 链式调用
+ - setState: 防抖
  - 各种检测方法:
     - isEmptyObject空对象
