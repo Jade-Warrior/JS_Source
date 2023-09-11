@@ -225,3 +225,12 @@
   if(typeof module === 'object' && typeof module.exports === 'object') module.exports = Promise;
 
 })();
+
+let p1 = new Promise((resolve, reject) => {
+    reject(100)
+  })
+  p1.then(null, null).then((res) => {
+    console.log(res)
+  }, (res) => {
+    console.log(res)
+  })

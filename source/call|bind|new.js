@@ -49,7 +49,7 @@ function MyNew(Constructor, ...params) {
   const obj = Object.create(Constructor.prototype);// 直接完成1，2步
   const result = Constructor.call(obj, ...params) // 3： 将构造函数的this指向新对象
   return result !== null && typeof result === 'object' ? result : obj;
-  // 4： 如果call返回的是一个对象，就返回该对象，如果call返回的不是一个对象，就返回创建的对象
+  // 4： 如果函数返回的是一个对象，就返回该对象，如果函数返回的不是一个对象，就返回创建的对象
 }
 
 // test
